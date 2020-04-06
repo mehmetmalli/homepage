@@ -118,7 +118,7 @@
       font-family: 'Roboto Mono';
       font-size: 0.85rem;
       width: 25%;
-      height: 13em;
+      height: 16em;
       margin: 0em 0.5em;
       box-sizing: border-box;
     }
@@ -209,6 +209,16 @@
           <a class="bookmark" href="https://webmail.izmirekonomi.edu.tr">IEU WebMAIL</a>
         </div>
       </div>
+      <div class="bookmark-set">
+        <div class="bookmark-title">Admin</div>
+        <div class="bookmark-inner-container">
+          <a class="bookmark" href="http://192.168.0.21/admin">PiHole</a>
+          <a class="bookmark" href="http://192.168.0.1">Modem</a>
+          <a class="bookmark" href="http://192.168.0.253">Router</a>
+          <a class="bookmark" href="https://ifconfig.me">ifconfig</a>
+          <a class="bookmark" href="https://www.speedtest.net">Speedtest</a>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -255,7 +265,7 @@
       }, 100);
     }
 
-    document.addEventListener("keydown", event => {
+    document.addEventListener("keyup", event => {
       if (event.keyCode == 32) {          // Spacebar to open search
         document.getElementById('search').style.display = 'flex';
         document.getElementById('search-field').focus();
