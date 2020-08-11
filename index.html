@@ -2,20 +2,21 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="icon" type="image/ico" href="./../favicon.ico">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="icon" type="image/ico" href="./../assets/images/favicon.ico">
   <title>Home</title>
   <style>
-    @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+    @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
     :root {
       --bg: #0f0808;
-      --fg: #ffffff;
-      --secondaryFg: #b3b3b3;
+      --fg: salmon;
+      --secondaryFg: #A9A9A9;
       --containerBg: #272727;
       --scrollbarColor: #3f3f3f;
+      --fontFamily: 'Ubuntu', monospace;
     }
 
     body {
@@ -36,18 +37,19 @@
       font-family: sans-serif;
       font-size: 3.5rem;
       font-weight: 600;
-      font-family: 'Roboto Mono';
+      font-family: var(--fontFamily);
       color: var(--fg);
       margin-bottom: 0.25em;
     }
 
+
     .weather-container {
-      width: 30%;
+      width: 30vw;
       background-color: var(--containerBg);
       padding: 1em;
       border-radius: 3px;
-      font-family: 'Roboto Mono';
-      color: var(--fg);
+      font-family: var(--fontFamily);
+      color: var(--secondaryFg);
       text-align: center;
     }
 
@@ -55,7 +57,7 @@
       display: inline-block;
     }
 
-    .bookmark-container {
+    #bookmark-container {
       display: flex;
       flex-direction: row;
       justify-content: center;
@@ -87,10 +89,10 @@
       padding: 1em;
       background-color: var(--containerBg);
       border-radius: 3px;
-      font-family: 'Roboto Mono';
+      font-family: var(--fontFamily);
       font-size: 0.85rem;
       width: 25%;
-      height: 16em;
+      height: 17em;
       margin: 0em 0.5em;
       box-sizing: border-box;
     }
@@ -137,10 +139,128 @@
     .bookmark:hover {
       color: var(--fg);
     }
+
+    input {
+      color: var(--secondaryFg);
+      background: none;
+      border: none;
+      border-bottom: 2px solid var(--containerBg);
+      border-radius: 2px;
+      transition: border 0.3s ease;
+      margin-top: 16px !important;
+      margin-bottom: 16px !important;
+      text-align: center !important;
+      padding: 8px;
+      display: block;
+      width: 30vw;
+    }
+
+    input:focus {
+      outline: 0;
+      border-bottom: 2px solid var(--fg);
+      color: whitesmoke;
+    }
   </style>
 </head>
 
 <body>
+  <script>
+
+    const bookmarks = [{
+      title: "Daily",
+      links: [{
+        name: "Gmail",
+        url: "https://www.gmail.com"
+      },
+      {
+        name: "GitHub",
+        url: "https://github.com"
+      },
+      {
+        name: "Wikipedia",
+        url: "https://www.wikipedia.org"
+      },
+      {
+        name: "Coronavirus Stats",
+        url: "https://www.worldometers.info/coronavirus"
+      },
+      {
+        name: "mehmetmalli.com.tr",
+        url: "https://mehmetmalli.com.tr"
+      }
+      ]
+    },
+    {
+      title: "Media",
+      links: [{
+        name: "YouTube",
+        url: "https://youtube.com"
+      },
+      {
+        name: "Netflix",
+        url: "https://netflix.com"
+      },
+      {
+        name: "Reddit",
+        url: "https://www.reddit.com"
+      },
+      {
+        name: "Twitch",
+        url: "https://twitch.tv",
+      },
+      {
+        name: "Neverthink",
+        url: "https://neverthink.tv",
+      },
+      ]
+    },
+    {
+      title: "Internet",
+      links: [
+        {
+          name: "ifconfig",
+          url: "https://ifconfig.me"
+        },
+        {
+          name: "Speedtest",
+          url: "https://www.speedtest.net"
+        },
+        {
+          name: "IP Location",
+          url: "https://www.iplocation.net"
+        },
+        {
+          name: "WHOIS",
+          url: "https://who.is"
+        }
+      ],
+    },
+    {
+      title: "Admin",
+      links: [{
+        name: "Modem",
+        url: "http://192.168.0.1"
+      },
+      {
+        name: "PiHole",
+        url: "http://192.168.0.21/admin"
+      },
+      {
+        name: "TP-Link Router",
+        url: "http://192.168.0.252"
+      },
+      {
+        name: "Huawei Router",
+        url: "http://192.168.0.253"
+      },
+      {
+        name: "Google Cloud Platform",
+        url: "https://console.cloud.google.com"
+      }
+      ]
+    }
+    ];
+  </script>
   <div class="container">
     <div id="clock"></div>
     <div class="weather-container">
@@ -150,65 +270,36 @@
         <div id="temp" class="inline"></div>
       </div>
     </div>
-    <div class="bookmark-container">
-      <div class="bookmark-set">
-        <div class="bookmark-title">Daily</div>
-        <div class="bookmark-inner-container">
-          <a class="bookmark" href="https://www.gmail.com">Gmail</a>
-          <a class="bookmark" href="https://www.wikipedia.org">Wikipedia</a>
-          <a class="bookmark" href="https://github.com">GitHub</a>
-          <a class="bookmark" href="https://www.worldometers.info/coronavirus/">Coronavirus Stats</a>
-        </div>
-      </div>
-      <div class="bookmark-set">
-        <div class="bookmark-title">Media</div>
-        <div class="bookmark-inner-container">
-          <a class="bookmark" href="https://youtube.com">YouTube</a>
-          <a class="bookmark" href="https://www.reddit.com">Reddit</a>
-          <a class="bookmark" href="https://netflix.com">Netflix</a>
-          <a class="bookmark" href="https://twitch.tv">Twitch</a>
-          <a class="bookmark" href="https://neverthink.tv">Neverthink</a>
-        </div>
-      </div>
-      <div class="bookmark-set">
-        <div class="bookmark-title">School</div>
-        <div class="bookmark-inner-container">
-          <a class="bookmark" href="https://www.ieu.edu.tr/tr">IEU</a>
-          <a class="bookmark" href="https://oasis.izmirekonomi.edu.tr/login">OASIS</a>
-          <a class="bookmark" href="https://ieu.blackboard.com">Blackboard</a>
-          <a class="bookmark" href="https://webmail.izmirekonomi.edu.tr">IEU WebMAIL</a>
-        </div>
-      </div>
-      <div class="bookmark-set">
-        <div class="bookmark-title">Admin</div>
-        <div class="bookmark-inner-container">
-          <a class="bookmark" href="http://192.168.0.21/admin">PiHole</a>
-          <a class="bookmark" href="http://192.168.0.1">Modem</a>
-          <a class="bookmark" href="http://192.168.0.253">Router</a>
-          <a class="bookmark" href="https://ifconfig.me">ifconfig</a>
-          <a class="bookmark" href="https://www.speedtest.net">Speedtest</a>
-        </div>
-      </div>
-    </div>
+
+    <form method="get" action="https://www.google.com/search">
+      <input id="search" type="text" name="q" placeholder="Search with Google" />
+    </form>
+
+    <div id="bookmark-container"></div>
   </div>
 
   <script>
-
-
+    document.getElementById("search").focus();
+    // Get current time and format
     function getTime() {
       let date = new Date(),
         min = date.getMinutes(),
         sec = date.getSeconds(),
         hour = date.getHours();
 
-      return "" +
-        (hour < 10 ? ("0" + hour) : hour) + ":" +
-        (min < 10 ? ("0" + min) : min) + ":" +
-        (sec < 10 ? ("0" + sec) : sec);
+      return (
+        "" +
+        (hour < 10 ? "0" + hour : hour) +
+        ":" +
+        (min < 10 ? "0" + min : min) +
+        ":" +
+        (sec < 10 ? "0" + sec : sec)
+      );
     }
-
-    window.onload = () => {
+    // Handle Weather request
+    function getWeather() {
       let xhr = new XMLHttpRequest();
+      // Request to open weather map
       xhr.open('GET', 'https://api.openweathermap.org/data/2.5/weather?id=311046&units=metric&appid=e5b292ae2f9dae5f29e11499c2d82ece');
       xhr.onload = () => {
         if (xhr.readyState === 4) {
@@ -222,12 +313,37 @@
         }
       }
       xhr.send();
+    }
+    // Handle writing out Bookmarks
+    function setupBookmarks() {
+      const bookmarkContainer = document.getElementById("bookmark-container");
+      bookmarkContainer.innerHTML = bookmarks
+        .map((b) => {
+          const html = ["<div class='bookmark-set'>"];
+          html.push(`<div class="bookmark-title">${b.title}</div>`);
+          html.push('<div class="bookmark-inner-container">');
+          html.push(
+            ...b.links.map(
+              (l) =>
+                `<a class="bookmark" href="${l.url}" target="_blank">${l.name}</a>`
+            )
+          );
+          html.push("</div></div>");
+          return html.join("");
+        })
+        .join("");
+    }
 
+    window.onload = () => {
+      setupBookmarks();
+      getWeather();
+      // Set up the clock
       document.getElementById("clock").innerHTML = getTime();
+      // Set clock interval to tick clock
       setInterval(() => {
         document.getElementById("clock").innerHTML = getTime();
       }, 100);
-    }
+    };
   </script>
 </body>
 
