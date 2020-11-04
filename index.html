@@ -215,6 +215,27 @@
       ]
     },
     {
+      title: "School",
+      links: [
+        {
+          name: "Debis",
+          url: "http://debis.deu.edu.tr"
+        },
+        {
+          name: "Sakai",
+          url: "https://online.deu.edu.tr"
+        },
+        {
+          name: "Webmail",
+          url: "https://webmail7.deu.edu.tr"
+        },
+        {
+          name: "DEU",
+          url: "https://www.deu.edu.tr"
+        }
+      ],
+    },
+    {
       title: "Internet",
       links: [
         {
@@ -334,9 +355,9 @@
     function setupBookmarks() {
       const bookmarkContainer = document.getElementById("bookmark-container");
       bookmarkContainer.innerHTML = bookmarks
-        .map((b) => {
+        .map((b, index) => {
           const html = ["<div class='bookmark-set'>"];
-          html.push(`<div class="bookmark-title">${b.title}</div>`);
+          html.push(`<div class="bookmark-title" onclick="openBookmarks(${index})">${b.title}</div>`);
           html.push('<div class="bookmark-inner-container">');
           html.push(
             ...b.links.map(
@@ -348,6 +369,12 @@
           return html.join("");
         })
         .join("");
+    }
+
+    function openBookmarks(index) {
+      bookmarks[index].links.reverse().forEach(link => {
+        window.open(link.url)
+      });
     }
 
     window.onload = () => {
